@@ -18,7 +18,7 @@
                 <div class="mess">{{text | safe}}</div>
             </div>
             <form action="{{url_for('success')}}" method="POST">
-                <input class="phnumber" title="Your phone number will be safe with us" placeholder="Enter your phone number here" type="number" name="phone_number"
+                <input class="phnumber" title="Your phone number will be safe with us" placeholder="(optional)Enter your phone number here" type="number" name="phone_number"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                 maxlength="10"
                 > <br>
