@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Data Collector Web App</title>
+        <link href="../static/main.css" rel="stylesheet">
+        <style>
+            .mess{
+                color: red;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="comic">
+                <h1><b>Collecting height</b></h1>
+                <h3>Please fill the entries to get population statistics on height</h3>
+                <div class="mess">{{text | safe}}</div>
+            </div>
+            <form action="{{url_for('success')}}" method="POST">
+                <input class="phnumber" title="Your phone number will be safe with us" placeholder="Enter your phone number here" type="number" name="phone_number" required
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="10"
+                > <br>
+                <input class="email" title="Your email will be safe with us" placeholder="Enter your email here" type="email" name="email_name" required> <br>
+                <input class="height" title="Your Data will be safe with us" placeholder="Enter your height in cm" type="number" name="height" min="50" max="400" step="0.01" required> <br>
+                <button class="button button1"type="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
