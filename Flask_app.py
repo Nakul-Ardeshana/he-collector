@@ -29,9 +29,12 @@ def success():
     if request.method == 'POST':
         email = request.form["email_name"]
         height = request.form["height"]
-        phoneno = request.form["phone_number"]
+        if len(str(request.form["phone_number"])) ==  0:
+            phoneno = None
+        else:
+            phoneno = request.form["phone_number"]
         if db.session.query(Data).filter(Data.email_ == email).count() == 0 :
-            if db.session.query(Data).filter(Data.phoneno_ == phoneno).count() == 0 :
+            if db.session.query(Data).filter(Data.phoneno_ == phoneno).count() == 0 and phoneno != None:
                 data=Data(email,height,phoneno)
                 db.session.add(data)
                 db.session.commit()
