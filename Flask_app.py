@@ -34,7 +34,16 @@ def success():
         else:
             phoneno = request.form["phone_number"]
         if db.session.query(Data).filter(Data.email_ == email).count() == 0 :
-            if db.session.query(Data).filter(Data.phoneno_ == phoneno).count() == 0 and phoneno != None:
+            if db.session.query(Data).filter(Data.phoneno_ == phoneno).count() == 0:
+                data=Data(email,height,phoneno)
+                db.session.add(data)
+                db.session.commit()
+                average_height=db.session.query(func.avg(Data.height_)).scalar()
+                average_height= round(average_height,3)
+                count=db.session.query(Data.height_).count()
+                send_email(email,height,average_height,count)
+                return render_template("success.html")
+            elif phoneno == None:
                 data=Data(email,height,phoneno)
                 db.session.add(data)
                 db.session.commit()
