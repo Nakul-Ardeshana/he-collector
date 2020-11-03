@@ -2,7 +2,7 @@ from email.mime.text import MIMEText
 import smtplib
 def send_email(email, height, avg, count):
     from_email = "collectorheight@gmail.com"
-    from_password = "heightcollector"
+    from_password = "nakulardeshana"
     to_email = email
 
     subject="height data"
